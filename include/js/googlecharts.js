@@ -4,7 +4,7 @@ $(window).on("load", function() {
 
   function drawChart() {
     var jsonData = $.ajax({
-      url: "http://localhost:3004/getTvShowRoutes",
+      url: "https://yourslangapi.herokuapp.com/getTvShowRoutes",
       dataType: "json", // type of data we're expecting from server
       async: false // make true to avoid waiting for the request to be complete
     });
@@ -33,7 +33,7 @@ $(window).on("load", function() {
 
 function drawChartByName(name) {
   var jsonData = $.ajax({
-    url: "http://localhost:3004/getTvShowByNameRoutes/" + name,
+    url: "https://yourslangapi.herokuapp.com/getTvShowByNameRoutes/" + name,
     dataType: "json", // type of data we're expecting from server
     async: false // make true to avoid waiting for the request to be complete
   });
