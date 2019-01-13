@@ -1,29 +1,6 @@
 $(window).on("load", function() {
   google.charts.load("current", { packages: ["bar"] });
   google.charts.load("current", { packages: ["corechart"] });
-  /*   google.charts.setOnLoadCallback(drawChart);
-
-   function drawChart() {
-    var jsonData = $.ajax({
-      url: "https://yourslangapi.herokuapp.com/getTvShowRoutes",
-      dataType: "json", // type of data we're expecting from server
-      async: false // make true to avoid waiting for the request to be complete
-    });
-
-    var data = google.visualization.arrayToDataTable(jsonData.responseJSON);
-
-    var options = {
-      chart: {
-        title: "כמות ציוצים לתוכנית"
-      },
-
-      bars: "horizontal" // Required for Material Bar Charts.
-    };
-    var chart = new google.charts.Bar(
-      document.getElementById("barchart_material")
-    );
-    chart.draw(data, google.charts.Bar.convertOptions(options));
-  } */
 
   $(".col-lg-3.tvShow").on("click", function(event) {
     let parentDiv = event.target.parentNode;
@@ -34,41 +11,11 @@ $(window).on("load", function() {
 });
 
 function drawChartByName(name) {
-  /* var jsonData = $.ajax({
-    url: "https://yourslangapi.herokuapp.com/getTvShowByNameRoutes/" + name,
-    dataType: "json", // type of data we're expecting from server
-    async: false // make true to avoid waiting for the request to be complete
-  });
-  //console.log(jsonData.responseJSON);
-  var tvShowName = jsonData.responseJSON[0].tvshowname;
-  var dataToDisplay = [];
-  dataToDisplay.push(["ביטוי", "כמות ציוצים"]);
-  jsonData.responseJSON[0].sentences.forEach(item => {
-    let barColor;
-
-    console.log(barColor);
-    dataToDisplay.push([item.text, item.tweets.length]);
-  });
-  console.log(dataToDisplay);
-  var data = google.visualization.arrayToDataTable(dataToDisplay);
-
-  var options = {
-    chart: {
-      title: tvShowName
-    },
-    bars: "horizontal" // Required for Material Bar Charts.
-  };
-
-  var chart = new google.charts.Bar(
-    document.getElementById("barchart_material")
-  );
-  chart.draw(data, google.charts.Bar.convertOptions(options)); */
   var jsonData = $.ajax({
     url: "https://yourslangapi.herokuapp.com/getTvShowByNameRoutes/" + name,
     dataType: "json", // type of data we're expecting from server
     async: false // make true to avoid waiting for the request to be complete
   });
-  //console.log(jsonData.responseJSON);
   let tvShowName = jsonData.responseJSON[0].tvshowname;
   console.log("tvShowName " + tvShowName);
   let dataToDisplay = [];
@@ -121,6 +68,7 @@ function drawChartByName(name) {
     },
     height: 1000,
     width: 1000,
+    bars: "horizontal", // Required for Material Bar Charts.
     legend: { position: "none" },
     chartArea: { left: 400, width: "80%" }
   };
